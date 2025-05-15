@@ -65,10 +65,7 @@ async fn main() -> anyhow::Result<()> {
     )
     .context("Failed to load templates")?;
 
-    tera.register_filter("temperature_class", filters::temperature_class);
-    tera.register_filter("probability", filters::probability);
-    tera.register_filter("precip_class", filters::precip_class);
-    tera.register_filter("time_ago", filters::time_ago);
+    filters::register_all(&mut tera);
 
     let state = AppState {
         tera,

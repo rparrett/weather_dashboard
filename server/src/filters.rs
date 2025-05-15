@@ -1,9 +1,9 @@
 use std::collections::HashMap;
 
 use chrono::{TimeZone, Utc};
-use tera::{Result, Value, to_value, try_get_value};
+use tera::{Result, Tera, Value, to_value, try_get_value};
 
-pub fn temperature_class(value: &Value, _args: &HashMap<String, Value>) -> Result<Value> {
+fn temperature_class(value: &Value, _args: &HashMap<String, Value>) -> Result<Value> {
     let f = try_get_value!("temperature_class", "value", f64, value);
 
     // Round and compute the color based on the thresholds
@@ -22,13 +22,13 @@ pub fn temperature_class(value: &Value, _args: &HashMap<String, Value>) -> Resul
     Ok(to_value(color).unwrap())
 }
 
-pub fn probability(value: &Value, _args: &HashMap<String, Value>) -> Result<Value> {
+fn probability(value: &Value, _args: &HashMap<String, Value>) -> Result<Value> {
     let f = try_get_value!("probability", "value", f64, value);
 
     Ok(to_value(format!("{}", (f * 100.0).round())).unwrap())
 }
 
-pub fn precip_class(value: &Value, _args: &HashMap<String, Value>) -> Result<Value> {
+fn precip_class(value: &Value, _args: &HashMap<String, Value>) -> Result<Value> {
     let f = try_get_value!("precip_class", "value", f64, value);
 
     let class = if f > 0.0 { "wet" } else { "dry" };
@@ -36,7 +36,7 @@ pub fn precip_class(value: &Value, _args: &HashMap<String, Value>) -> Result<Val
     Ok(to_value(class).unwrap())
 }
 
-pub fn time_ago(value: &Value, _args: &HashMap<String, Value>) -> Result<Value> {
+fn time_ago(value: &Value, _args: &HashMap<String, Value>) -> Result<Value> {
     let f = try_get_value!("time_ago", "value", i64, value);
 
     let now = Utc::now();
@@ -58,4 +58,11 @@ pub fn time_ago(value: &Value, _args: &HashMap<String, Value>) -> Result<Value> 
     };
 
     Ok(to_value(rendered).unwrap())
+}
+
+pub(crate) fn register_all(tera: &mut Tera) {
+    tera.register_filter("temperature_class", temperature_class);
+    tera.register_filter("probability", probability);
+    tera.register_filter("precip_class", precip_class);
+    tera.register_filter("time_ago", time_ago);
 }
