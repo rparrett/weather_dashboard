@@ -1,0 +1,15 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+pirate_weather = { path = "../pirate_weather", features = ["rustls"] }
+chrono = { version = "0.4.41", features = ["serde"] }
+chrono-tz = { version = "0.10.3", features = ["serde"] }
+tera = "1.20.0"
+serde = "1.0.219"
+axum = { version = "0.8.4", features = ["http2"] }
+anyhow = "1.0.98"
+toml = "0.8.22"
