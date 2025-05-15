@@ -1,21 +1,19 @@
 use axum::{Json, extract::State, http::StatusCode, response::Html};
 use tera::Context;
+use tracing::{debug, error};
 
 use crate::AppState;
 
 pub(crate) async fn is_data_fresh(State(state): State<AppState>) -> Result<Json<bool>, StatusCode> {
-    println!("is_data_fresh");
     let forecast_cache = state.forecast_cache.read().await;
     Ok(Json(!forecast_cache.needs_update()))
 }
 
 pub(crate) async fn index(State(state): State<AppState>) -> Result<Html<String>, StatusCode> {
-    println!("index");
-
     let needs_update = {
         let forecast_cache = state.forecast_cache.read().await;
         if forecast_cache.needs_update() {
-            println!("index waking background thread for update");
+            debug!("Waking background worker");
             state.notify.notify_one();
             true
         } else {
@@ -33,7 +31,7 @@ pub(crate) async fn index(State(state): State<AppState>) -> Result<Html<String>,
     let rendered = state
         .tera
         .render("main.tera", &context)
-        .inspect_err(|e| eprintln!("Failed to render template. {:?}", e))
+        .inspect_err(|e| error!("Failed to render template. {}", e))
         .map_err(|_e| StatusCode::INTERNAL_SERVER_ERROR)?;
 
     Ok(Html(rendered))

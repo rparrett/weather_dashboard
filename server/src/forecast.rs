@@ -43,8 +43,7 @@ pub(crate) async fn get_forecast(
             None,
             None,
         )
-        .await
-        .inspect_err(|e| println!("{:?}", e))?;
+        .await?;
 
     let mut days = vec![];
 

@@ -13,6 +13,8 @@ use tokio::{
     sync::{Notify, RwLock},
     task,
 };
+use tower_http::trace::TraceLayer;
+use tracing_subscriber::EnvFilter;
 use worker::background_worker;
 
 mod config;
@@ -49,6 +51,16 @@ struct AppState {
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    tracing_subscriber::fmt()
+        .with_env_filter(
+            EnvFilter::try_from_default_env()
+                .or_else(|_| {
+                    EnvFilter::try_new("server=debug,tower_http=debug,axum::rejection=trace")
+                })
+                .unwrap(),
+        )
+        .init();
+
     let server_dir = Path::new("server");
     let path = if server_dir.is_dir() {
         PathBuf::from("server")
@@ -78,7 +90,8 @@ async fn main() -> anyhow::Result<()> {
     let app = Router::new()
         .route("/", get(routes::index))
         .route("/is_data_fresh", get(routes::is_data_fresh))
-        .with_state(state);
+        .with_state(state)
+        .layer(TraceLayer::new_for_http());
 
     let listener = tokio::net::TcpListener::bind(config.listen_addr).await?;
     axum::serve(listener, app).await?;

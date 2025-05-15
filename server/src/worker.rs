@@ -1,4 +1,5 @@
 use pirate_weather::apis::{configuration::Configuration, weather_api::WeatherApiClient};
+use tracing::{debug, error};
 
 use crate::{AppState, get_forecast};
 
@@ -7,17 +8,17 @@ pub(crate) async fn background_worker(state: AppState) {
         // Wait for notification
         state.notify.notified().await;
 
-        println!("Background worker awake.");
+        debug!("Background worker awake.");
 
         {
             let forecast_cache = state.forecast_cache.read().await;
             if !forecast_cache.needs_update() {
-                println!("Nothing to do...");
+                debug!("Nothing to do...");
                 continue;
             }
         }
 
-        println!("Fetching new data...");
+        debug!("Fetching new data...");
 
         let weather_config = Configuration::default();
         let client = WeatherApiClient::new(weather_config.into());
@@ -30,7 +31,7 @@ pub(crate) async fn background_worker(state: AppState) {
                 match get_forecast(&client, &state.config.pirate_weather_key, location).await {
                     Ok(forecast) => forecast,
                     Err(e) => {
-                        println!("{:?}", e);
+                        error!("{}", e);
                         ok = false;
                         break;
                     }
@@ -39,7 +40,7 @@ pub(crate) async fn background_worker(state: AppState) {
         }
 
         if !ok {
-            println!("Failed at least once, will retry later...");
+            debug!("Failed at least once, will retry later...");
             continue;
         }
 
@@ -48,6 +49,6 @@ pub(crate) async fn background_worker(state: AppState) {
             forecast_cache.update(forecasts);
         }
 
-        println!("Update complete.");
+        debug!("Update complete.");
     }
 }
