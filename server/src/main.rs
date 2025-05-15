@@ -16,7 +16,7 @@ use tokio::{
 use worker::background_worker;
 
 mod config;
-mod filter;
+mod filters;
 mod forecast;
 mod routes;
 mod worker;
@@ -65,10 +65,10 @@ async fn main() -> anyhow::Result<()> {
     )
     .context("Failed to load templates")?;
 
-    tera.register_filter("temperature_class", filter::temperature_class);
-    tera.register_filter("probability", filter::probability);
-    tera.register_filter("precip_class", filter::precip_class);
-    tera.register_filter("time_ago", filter::time_ago);
+    tera.register_filter("temperature_class", filters::temperature_class);
+    tera.register_filter("probability", filters::probability);
+    tera.register_filter("precip_class", filters::precip_class);
+    tera.register_filter("time_ago", filters::time_ago);
 
     let state = AppState {
         tera,
