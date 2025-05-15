@@ -13,7 +13,7 @@ use tokio::{
     sync::{Notify, RwLock},
     task,
 };
-use tower_http::trace::TraceLayer;
+use tower_http::{services::ServeDir, trace::TraceLayer};
 use tracing_subscriber::EnvFilter;
 use worker::background_worker;
 
@@ -95,9 +95,12 @@ async fn main() -> anyhow::Result<()> {
 
     task::spawn(background_worker(state.clone()));
 
+    let static_files = ServeDir::new(path.join("static"));
+
     let app = Router::new()
         .route("/", get(routes::index))
         .route("/is_data_fresh", get(routes::is_data_fresh))
+        .nest_service("/static", static_files)
         .with_state(state)
         .layer(TraceLayer::new_for_http());
 

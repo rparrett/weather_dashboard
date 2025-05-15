@@ -1,0 +1,88 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #002b36;
+    color: #586e75;
+}
+h1, h2, h3, h4, h5, h6, strong {
+    color: #6e8992;
+}
+a {
+    color: #268bd2;
+    text-decoration: none;
+}
+a:visited {
+    color: #268bd2;
+}
+a:active {
+    color: #4ca2df;
+}
+a:hover {
+    color: #4ca2df;
+}
+a.github svg {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    fill: #268bd2;
+}
+a.github:active svg {
+    fill: #4ca2df;
+}
+a.github:hover svg {
+    fill: #4ca2df;
+}
+.days {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+.temps {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.temp {
+    width: 30px;
+}
+.temp-label {
+    width: 16px;
+}
+.location-name {
+    grid-column: 1 / -1;
+    margin-top: 1rem;
+}
+.forecasts {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.5rem;
+}
+.time-cell {
+    text-wrap: nowrap;
+}
+
+.cold {
+    color: white;
+}
+.cool {
+    color: cyan;
+}
+.good {
+    color: #99ff00;
+}
+.warm {
+    color: orange;
+}
+.hot {
+    color: red;
+}
+.wet {
+    color: cyan;
+}
+
+.weekend {
+    color: #6e8992;
+    font-weight: bold;
+}
