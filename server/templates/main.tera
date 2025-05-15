@@ -138,6 +138,7 @@
             {% for forecast in forecasts %}
                 <div class="location-name">
                     <strong>{{forecast.location.name}}</strong>&nbsp;
+                    {% if forecast.location.link %}(<a href="{{forecast.location.link}}">mp</a>)&nbsp;{% endif %}
                     (<a href="https://merrysky.net/forecast/{{forecast.location.latitude}},{{forecast.location.longitude}}/us">merry</a>)&nbsp;
                     (<a href="https://forecast.weather.gov/MapClick.php?lat={{forecast.location.latitude}}&lon={{forecast.location.longitude}}">nws</a>)
                 </div>

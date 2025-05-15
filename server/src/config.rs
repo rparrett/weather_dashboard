@@ -23,7 +23,7 @@ pub struct Location {
     pub name: String,
     pub latitude: f64,
     pub longitude: f64,
-    pub link: String,
+    pub link: Option<String>,
 }
 
 impl Config {
