@@ -58,8 +58,10 @@ fn time_ago(value: &Value, _args: &HashMap<String, Value>) -> Result<Value> {
         format!("{} minutes", minutes)
     } else if hours == 1 {
         "1 hour".to_string()
-    } else {
+    } else if hours <= 48 {
         format!("{} hours", hours)
+    } else {
+        "ages".to_string()
     };
 
     Ok(to_value(rendered).unwrap())
