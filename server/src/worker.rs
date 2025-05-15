@@ -3,9 +3,10 @@ use tracing::{debug, error};
 
 use crate::{AppState, get_forecast};
 
+/// A worker task that runs in the background and periodically refreshes the forecast
+/// cache.
 pub(crate) async fn background_worker(state: AppState) {
     loop {
-        // Wait for notification
         state.notify.notified().await;
 
         debug!("Background worker awake.");

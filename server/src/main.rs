@@ -51,6 +51,8 @@ struct AppState {
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    // Setup tracing
+
     tracing_subscriber::fmt()
         .with_env_filter(
             EnvFilter::try_from_default_env()
@@ -61,6 +63,8 @@ async fn main() -> anyhow::Result<()> {
         )
         .init();
 
+    // Load config
+
     let server_dir = Path::new("server");
     let path = if server_dir.is_dir() {
         PathBuf::from("server")
@@ -70,6 +74,8 @@ async fn main() -> anyhow::Result<()> {
 
     let config = Config::new(path.join("config.toml")).context("Failed to load config.toml")?;
 
+    // Load templates
+
     let mut tera = Tera::new(
         path.join("templates/**/*.tera")
             .to_str()
@@ -78,6 +84,8 @@ async fn main() -> anyhow::Result<()> {
     .context("Failed to load templates")?;
 
     filters::register_all(&mut tera);
+
+    // Setup axum
 
     let state = AppState {
         tera,
