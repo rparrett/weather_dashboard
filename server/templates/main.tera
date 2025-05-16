@@ -28,6 +28,14 @@
                     setTimeout(() => checkFreshness(nextBackoff), backoff);
                 }
             }
+            window.addEventListener('scroll', (event) => {
+                const scrollX = window.scrollX || window.pageXOffset;
+
+                document.querySelectorAll('.location-name').forEach(el => {
+                    // Example: fade out based on scroll position
+                    el.style.left = scrollX + "px";
+                });
+            });
         </script>
     </head>
     <body>
