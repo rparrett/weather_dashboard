@@ -32,7 +32,7 @@ pub(crate) async fn background_worker(state: AppState) {
                 match get_forecast(&client, &state.config.pirate_weather_key, location).await {
                     Ok(forecast) => forecast,
                     Err(e) => {
-                        error!("{}", e);
+                        error!("{:?}", e);
                         ok = false;
                         break;
                     }
