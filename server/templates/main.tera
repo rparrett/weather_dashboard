@@ -40,7 +40,7 @@
                     <noscript>
                         Please refresh the page to get fresh data.
                     </noscript>
-                    <span id="freshening" class="animated-ellipsis">Grabbing fresh data</span>
+                    <span id="freshening" class="animated-ellipsis">Freshening</span>
                     <script>
                         document.getElementById("freshening").style.display = 'inline';
                         checkFreshness();
