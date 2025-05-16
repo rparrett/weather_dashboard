@@ -19,12 +19,20 @@ a:active {
 a:hover {
     color: #4ca2df;
 }
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+}
+.header>a {
+    display: block;
+}
+a.github {
+    width: 1.9em;
+    height: 1.9em;
+}
 a.github svg {
-    width: 2.1em;
-    height: 2.1em;
-    position: absolute;
-    top: 16px;
-    right: 8px;
     fill: #268bd2;
 }
 a.github:active svg {
@@ -33,12 +41,6 @@ a.github:active svg {
 a.github:hover svg {
     fill: #4ca2df;
 }
-.days {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-}
 .temps {
     display: flex;
     flex-direction: row;
@@ -46,23 +48,41 @@ a.github:hover svg {
 }
 .temp {
     width: 30px;
+    flex-grow: 1;
 }
 .temp-label {
     width: 16px;
 }
 .location-name {
-    grid-column: 1 / -1;
     margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
-.forecasts {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 0.5rem;
+.days {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+/* hack: make sure body's right padding shows when content scrolls */
+.days::after {
+    content: "";
+    flex: 0 0 0.01px;
+}
+.day {
+    background-color: hsl(192 96% 9%);
+    border-radius: 5px;
+    padding: 5px;
+    min-width: 120px;
+    width: 140px;
+}
+.day hr {
+	border-top: 1px solid white;
+	border-width: 1px 0 0 0;
+	border-color: hsla(0, 0%, 100%, 0.1);
+	margin: 4px 0 4px 0;
 }
 .time-cell {
     text-wrap: nowrap;
 }
-
 .cold {
     color: white;
 }
