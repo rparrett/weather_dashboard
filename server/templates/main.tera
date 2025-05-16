@@ -48,7 +48,7 @@
                     <noscript>
                         Please refresh the page to get fresh data.
                     </noscript>
-                    <span id="freshening">Hang on while I grab some fresh data for you...</span>
+                    <span id="freshening" class="animated-ellipsis">Grabbing fresh data</span>
                     <script>
                         document.getElementById("freshening").style.display = 'inline';
                         checkFreshness();
