@@ -51,7 +51,7 @@ a.github:hover svg {
     flex-grow: 1;
 }
 .temp-label {
-    width: 16px;
+    width: 20px;
 }
 .location-name {
     margin-top: 1rem;
@@ -71,7 +71,7 @@ a.github:hover svg {
     background-color: hsl(192 96% 9%);
     border-radius: 5px;
     padding: 5px;
-    min-width: 120px;
+    min-width: 100px;
     width: 140px;
 }
 .day hr {
