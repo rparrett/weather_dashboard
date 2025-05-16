@@ -59,7 +59,10 @@
             <div class="days">
             {% for day in forecast.days %}
                 <div class="day">
-                    <div class="time-cell"><span {% if day.time_is_weekend %}class="weekend"{% endif %}>{{day.time_formatted}}</span></div>
+                    <div class="time{% if day.is_weekend %} weekend{% endif %}">
+                        <div>{{day.week_day}}</div>
+                        <div>{{day.date}}</div>
+                    </div>
                     <hr>
                     <div class="temps">
                         <div class="temp-label"><strong>H</strong></div>

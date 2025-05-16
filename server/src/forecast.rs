@@ -14,8 +14,9 @@ pub(crate) struct TemplateForecast {
 
 #[derive(Serialize)]
 pub(crate) struct TemplateDay {
-    pub(crate) time_formatted: String,
-    pub(crate) time_is_weekend: bool,
+    pub(crate) date: String,
+    pub(crate) week_day: String,
+    pub(crate) is_weekend: bool,
     pub(crate) icon: String,
     pub(crate) summary: String,
     pub(crate) apparent_temperature_low: f64,
@@ -66,8 +67,9 @@ pub(crate) async fn get_forecast(
             .with_context(|| "Time zone conversion failed")?;
 
         days.push(TemplateDay {
-            time_formatted: time.format("%a %b %d").to_string(),
-            time_is_weekend: time.weekday() == Weekday::Sat || time.weekday() == Weekday::Sun,
+            date: time.format("%b %d").to_string(),
+            week_day: time.format("%a").to_string(),
+            is_weekend: time.weekday() == Weekday::Sat || time.weekday() == Weekday::Sun,
             icon: day.icon.unwrap(),
             summary: day.summary.unwrap(),
             apparent_temperature_low: day.apparent_temperature_low.unwrap(),

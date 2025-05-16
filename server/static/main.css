@@ -80,8 +80,10 @@ a.github:hover svg {
 	border-color: hsla(0, 0%, 100%, 0.1);
 	margin: 4px 0 4px 0;
 }
-.time-cell {
+.time {
     text-wrap: nowrap;
+    display: flex;
+    justify-content: space-between;
 }
 .cold {
     color: white;
@@ -101,7 +103,6 @@ a.github:hover svg {
 .wet {
     color: cyan;
 }
-
 .weekend {
     color: #6e8992;
     font-weight: bold;
