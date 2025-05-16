@@ -11,7 +11,7 @@ FROM debian:bookworm-slim
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
-    libssl-dev && \
+    libssl-dev ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
 # Get compiled binary and other files from builder's cargo install directory
