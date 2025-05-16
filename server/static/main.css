@@ -86,3 +86,6 @@ a.github:hover svg {
     color: #6e8992;
     font-weight: bold;
 }
+#freshening {
+    display: none;
+}

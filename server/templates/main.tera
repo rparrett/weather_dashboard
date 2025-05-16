@@ -33,19 +33,18 @@
     <body>
         <p>
             Powered By <a href="https://pirateweather.net/en/latest/">Pirate Weather</a><br/>
-            Last updated <span class="updated_at">{{ updated_at | time_ago }}</span> ago
+            Last updated <strong class="updated_at">{{ updated_at | time_ago }}</strong> ago.
+            {% if needs_update %}
+                <noscript>
+                    Please refresh the page to get fresh data.
+                </noscript>
+                <span id="freshening">Hang on while I grab some fresh data for you...</span>
+                <script>
+                    document.getElementById("freshening").style.display = 'inline';
+                    checkFreshness();
+                </script>
+            {% endif %}
         </p>
-        {% if needs_update %}
-        <p>
-            Hang on while I grab some fresh data for you...
-            <script>
-                checkFreshness();
-            </script>
-            <noscript>
-                Please refresh the page.
-            </noscript>
-        </p>
-        {% endif %}
         <div class="forecasts">
             {% for forecast in forecasts %}
                 <div class="location-name">
