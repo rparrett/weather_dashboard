@@ -1,3 +1,10 @@
+html {
+    scroll-snap-type: x proximity;
+    scroll-padding-left: 8px;
+}
+.day {
+    scroll-snap-align: start;
+}
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #002b36;
