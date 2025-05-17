@@ -2,6 +2,8 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #002b36;
     color: #586e75;
+    /* for .sticky */
+    width: max-content;
 }
 h1, h2, h3, h4, h5, h6, strong {
     color: #6e8992;
@@ -53,9 +55,14 @@ a.github:hover svg {
 .temp-label {
     width: 20px;
 }
-.location-name {
+.location {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
+}
+.sticky {
+    width: max-content;
+    position: sticky;
+    left: 8px;
 }
 .days {
     display: flex;
