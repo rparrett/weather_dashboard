@@ -1,25 +1,31 @@
+:root {
+  --bg-color: hsl(192, 100%, 11%);
+  --panel-bg-color: hsl(192 96% 9%);
+  --text-color: hsl(194, 14%, 40%);
+  --text-color-strong: hsl(194, 14%, 50%);
+  --link-color: hsl(205, 69%, 49%);
+  --link-color-hover: hsl(205, 69%, 59%);
+}
+
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #002b36;
-    color: #586e75;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     /* for .sticky */
     width: max-content;
 }
 h1, h2, h3, h4, h5, h6, strong {
-    color: #6e8992;
+    color: var(--text-color-strong);
 }
 a {
-    color: #268bd2;
+    color: var(--link-color);
     text-decoration: none;
 }
 a:visited {
-    color: #268bd2;
+    color: var(--link-color)
 }
-a:active {
-    color: #4ca2df;
-}
-a:hover {
-    color: #4ca2df;
+a:active, a:hover {
+    color: var(--link-color-hover)
 }
 .header {
     display: flex;
@@ -35,13 +41,10 @@ a.github {
     height: 1.9em;
 }
 a.github svg {
-    fill: #268bd2;
+    fill: var(--link-color);
 }
-a.github:active svg {
-    fill: #4ca2df;
-}
-a.github:hover svg {
-    fill: #4ca2df;
+a.github:active svg, a.github:hover svg {
+    fill: var(--link-color-hover);
 }
 .temps {
     display: flex;
@@ -75,17 +78,21 @@ a.github:hover svg {
     flex: 0 0 0.01px;
 }
 .day {
-    background-color: hsl(192 96% 9%);
+    background-color: var(--panel-bg-color);
     border-radius: 5px;
     padding: 5px;
     min-width: 100px;
     width: 140px;
 }
 .day hr {
-	border-top: 1px solid white;
+    border-style: solid;
 	border-width: 1px 0 0 0;
 	border-color: hsla(0, 0%, 100%, 0.1);
 	margin: 4px 0 4px 0;
+}
+.day.weekend .time {
+    color: var(--text-color-strong);
+    font-weight: bold;
 }
 .time {
     text-wrap: nowrap;
@@ -110,10 +117,7 @@ a.github:hover svg {
 .wet {
     color: cyan;
 }
-.weekend {
-    color: #6e8992;
-    font-weight: bold;
-}
+
 #freshening {
     display: none;
 }

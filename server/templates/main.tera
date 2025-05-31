@@ -57,8 +57,8 @@
         </div>
         <div class="days">
             {% for day in forecast.days %}
-            <div class="day">
-                <div class="time{% if day.is_weekend %} weekend{% endif %}">
+            <div class="day {% if day.is_weekend %} weekend{% endif %}">
+                <div class="time">
                     <div>{{day.week_day}}</div>
                     <div>{{day.date}}</div>
                 </div>
