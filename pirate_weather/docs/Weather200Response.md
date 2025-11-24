@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **longitude** | Option<**f64**> | The requested longitude. | [optional]
 **timezone** | Option<**String**> | The timezone name for the requested location. | [optional]
 **offset** | Option<**f64**> | The timezone offset in hours. | [optional]
-**elevation** | Option<**i32**> | The elevation in meters of the forecast point. | [optional]
+**elevation** | Option<**f64**> | The elevation in meters of the forecast point. | [optional]
 **currently** | Option<[**models::Currently**](currently.md)> |  | [optional]
 **minutely** | Option<[**models::Minutely**](minutely.md)> |  | [optional]
 **hourly** | Option<[**models::Hourly**](hourly.md)> |  | [optional]

@@ -1,6 +1,6 @@
 [package]
 name = "pirate_weather"
-version = "2.6.0"
+version = "2.8.0"
 authors = ["mail@pirateweather.net"]
 description = "Pirate Weather provides an open, free, and documented source of government weather data."
 license = "Apache License 2.0"
