@@ -15,7 +15,7 @@ externalDocs:
 tags:
   - name: Weather
     description: Pirate Weather provides an open, free, and documented source of government weather data.
-      
+
 paths:
   "/forecast/{api_key}/{lat_and_long_or_time}":
     get:
@@ -39,7 +39,7 @@ paths:
             type: string
         - name: exclude
           in: query
-          description: Exclude some keys (hourly, minutely, daily, flags, alerts), models (nbm, hrrr, gefs), or detailed text summaries (summary) from the Pirate Weather forecast response. 
+          description: Exclude some keys (hourly, minutely, daily, flags, alerts), models (nbm, hrrr, gefs), or detailed text summaries (summary) from the Pirate Weather forecast response.
           schema:
             type: string
             enum:
@@ -66,7 +66,7 @@ paths:
           schema:
             type: string
             enum:
-              - stationPressure      
+              - stationPressure
         - name: lang
           in: query
           description: Returns the forecast summaries in the desired language.
@@ -144,13 +144,13 @@ paths:
           in: query
           description: Include the full set of parameters in recent time machine requests.
           schema:
-            type: integer    
+            type: integer
         - name: icon
           in: query
           description: Changes the icon field to return icons which aren't part of the Dark Sky icon set.
           schema:
-            type: string    
-                
+            type: string
+
       responses:
         "400":
           description: "Bad Request. Longitude or Latitude is invalid."
@@ -240,7 +240,7 @@ servers:
   - url: https://dev.pirateweather.net
     description: Development forecast data server
   - url: https://timemachine.pirateweather.net
-    description: Production historic data server    
+    description: Production historic data server
 components:
   schemas:
     latitude:
@@ -334,8 +334,7 @@ components:
           description: The wind gust speed.
           example: 9.78
         windBearing:
-          type: integer
-          format: int32
+          type: number
           description: The direction of the wind in degrees.
           example: 195
         cloudCover:
@@ -365,7 +364,7 @@ components:
         feelsLike:
           type: number
           description: The apparent temperature reported by NBM and gfs. Only returned when version>1.
-          example: 23.23         
+          example: 23.23
         currentDayIce:
           type: number
           description: The ice precipitation that has accumulated so far during the day, from midnight until the forecast request time. Only returned when version>1.
@@ -377,20 +376,20 @@ components:
         currentDaySnow:
           type: number
           description: The snow precipitation that has accumulated so far during the day, from midnight until the forecast request time. Only returned when version>1.
-          example: 0    
-        stationPressure:      
+          example: 0
+        stationPressure:
           type: number
           description: The station pressure hectopascals. Only returned when extraVars contains stationPressure.
           example: 0
         solar:
           type: number
           description: The Downward Short-Wave Radiation Flux measured in W/m^2. Only returned when version>1.
-          example: 378.4  
+          example: 378.4
         cape:
           type: integer
           format: int32
           description: The Convective Available Potential Energy measured in J/kg. Only returned when version>1.
-          example: 0             
+          example: 0
     minutely:
       type: object
       description: A block containing minute-by-minute precipitation intensity for the next 60 minutes.
@@ -502,7 +501,7 @@ components:
               stationPressure:
                 type: number
                 description: The station pressure. Only returned when extraVars contains stationPressure.
-                example: 1009.92                
+                example: 1009.92
               windSpeed:
                 type: number
                 description: The wind speed.
@@ -512,8 +511,7 @@ components:
                 description: The wind gust speed.
                 example: 15.84
               windBearing:
-                type: integer
-                format: int32
+                type: number
                 description: The direction of the wind in degrees.
                 example: 190
               cloudCover:
@@ -715,8 +713,7 @@ components:
                 description: The time when the maximum wind gust occurs in UNIX format.
                 example: 1749333600
               windBearing:
-                type: integer
-                format: int32
+                type: number
                 description: The direction of the wind in degrees.
                 example: 244
               cloudCover:

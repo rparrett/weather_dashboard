@@ -69,7 +69,7 @@ pub struct HourlyDataInner {
     pub wind_gust: Option<f64>,
     /// The direction of the wind in degrees.
     #[serde(rename = "windBearing", skip_serializing_if = "Option::is_none")]
-    pub wind_bearing: Option<i32>,
+    pub wind_bearing: Option<f64>,
     /// The fraction of the sky covered by clouds.
     #[serde(rename = "cloudCover", skip_serializing_if = "Option::is_none")]
     pub cloud_cover: Option<f64>,

@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **wind_speed** | Option<**f64**> | The wind speed. | [optional]
 **wind_gust** | Option<**f64**> | The wind gust speed. | [optional]
 **wind_gust_time** | Option<**i32**> | The time when the maximum wind gust occurs in UNIX format. | [optional]
-**wind_bearing** | Option<**i32**> | The direction of the wind in degrees. | [optional]
+**wind_bearing** | Option<**f64**> | The direction of the wind in degrees. | [optional]
 **cloud_cover** | Option<**f64**> | The fraction of the sky covered by clouds. | [optional]
 **uv_index** | Option<**f64**> | The max UV index during that day. | [optional]
 **uv_index_time** | Option<**i32**> | The time when the maximum UV index occurs in UNIX format. | [optional]

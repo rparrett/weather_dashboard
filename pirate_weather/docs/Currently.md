@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **pressure** | Option<**f64**> | The sea-level pressure in hectopascals. | [optional]
 **wind_speed** | Option<**f64**> | The wind speed. | [optional]
 **wind_gust** | Option<**f64**> | The wind gust speed. | [optional]
-**wind_bearing** | Option<**i32**> | The direction of the wind in degrees. | [optional]
+**wind_bearing** | Option<**f64**> | The direction of the wind in degrees. | [optional]
 **cloud_cover** | Option<**f64**> | The fraction of the sky covered by clouds. | [optional]
 **uv_index** | Option<**f64**> | The UV index. | [optional]
 **visibility** | Option<**f64**> | The visibility in kilometers. | [optional]
