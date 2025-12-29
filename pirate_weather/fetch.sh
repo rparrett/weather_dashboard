@@ -1,1 +1,1 @@
-wget -O PW_OpenAPI.yaml https://raw.githubusercontent.com/Pirate-Weather/pirateweather/43bfff033dd8cce749cb594cb47e0150ebf84733/PW_OpenAPI.yaml
+wget -O PW_OpenAPI.yaml https://raw.githubusercontent.com/Pirate-Weather/pirateweather/7dbfa571b0e153d18802453c75ac5ddba3c320c7/PW_OpenAPI.yaml

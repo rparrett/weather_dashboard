@@ -44,6 +44,7 @@ pub(crate) async fn get_forecast(
             None,
             None,
             None,
+            None,
         )
         .await?;
 

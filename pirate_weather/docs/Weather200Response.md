@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **currently** | Option<[**models::Currently**](currently.md)> |  | [optional]
 **minutely** | Option<[**models::Minutely**](minutely.md)> |  | [optional]
 **hourly** | Option<[**models::Hourly**](hourly.md)> |  | [optional]
+**day_night** | Option<[**models::DayNight**](day_night.md)> |  | [optional]
 **daily** | Option<[**models::Daily**](daily.md)> |  | [optional]
 **alerts** | Option<[**Vec<models::AlertsInner>**](alerts_inner.md)> | A block containing any severe weather alerts for the current location. | [optional]
 **flags** | Option<[**models::Flags**](flags.md)> |  | [optional]

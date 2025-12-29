@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## weather
 
-> models::Weather200Response weather(api_key, lat_and_long_or_time, exclude, extend, extra_vars, lang, units, version, tmextra, icon)
+> models::Weather200Response weather(api_key, lat_and_long_or_time, exclude, extend, extra_vars, lang, units, version, tmextra, icon, includes)
 Make a request to Pirate Weather
 
 Fetch a weather forecast or get historical weather data based on input latitude and longitude.
@@ -30,6 +30,7 @@ Name | Type | Description  | Required | Notes
 **version** | Option<**i32**> | Include fields which were not part of the Dark Sky API but were introduced in API version 2. |  |
 **tmextra** | Option<**i32**> | Include the full set of parameters in recent time machine requests. |  |
 **icon** | Option<**String**> | Changes the icon field to return icons which aren't part of the Dark Sky icon set. |  |
+**includes** | Option<**String**> | Include extra blocks that were not part of the Dark Sky API. |  |
 
 ### Return type
 
