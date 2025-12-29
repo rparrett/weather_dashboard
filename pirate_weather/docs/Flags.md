@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sources** | Option<**Vec<String>**> | The models used to generate the forecast. | [optional]
 **source_times** | Option<[**models::FlagsSourceTimes**](flags_sourceTimes.md)> |  | [optional]
-**nearest_station** | Option<**i32**> | The distance to the nearest station (not implemented, always returns 0). | [optional]
+**nearest_station** | Option<**f64**> | The distance to the nearest station (not implemented, always returns 0). | [optional]
 **units** | Option<**String**> | The units used in the forecasts. | [optional]
 **version** | Option<**String**> | The version of Pirate Weather used to generate the forecast. | [optional]
 **source_idx** | Option<[**models::FlagsSourceIdx**](flags_sourceIDX.md)> |  | [optional]

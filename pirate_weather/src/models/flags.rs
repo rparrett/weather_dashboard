@@ -21,7 +21,7 @@ pub struct Flags {
     pub source_times: Option<Box<models::FlagsSourceTimes>>,
     /// The distance to the nearest station (not implemented, always returns 0).
     #[serde(rename = "nearest-station", skip_serializing_if = "Option::is_none")]
-    pub nearest_station: Option<i32>,
+    pub nearest_station: Option<f64>,
     /// The units used in the forecasts.
     #[serde(rename = "units", skip_serializing_if = "Option::is_none")]
     pub units: Option<String>,

@@ -898,8 +898,7 @@ components:
               description: The time the GEFS model was last updated.
               example: 2025-06-07 00Z
         nearest-station:
-          type: integer
-          format: int32
+          type: number
           description: The distance to the nearest station (not implemented, always returns 0).
           example: 0
         units:
